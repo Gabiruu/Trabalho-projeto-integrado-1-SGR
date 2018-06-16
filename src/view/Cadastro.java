@@ -32,10 +32,10 @@ public class Cadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        labelLider = new javax.swing.JLabel();
+        labelTecnico = new javax.swing.JLabel();
         labelLinhaPesquisa = new javax.swing.JLabel();
         labelOrientador = new javax.swing.JLabel();
-        txtLider = new javax.swing.JTextField();
+        txtTecnico = new javax.swing.JTextField();
         txtLinhaPesquisa = new javax.swing.JTextField();
         txtOrientador = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -46,7 +46,7 @@ public class Cadastro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de grupo");
 
-        labelLider.setText("Nome do Líder:");
+        labelTecnico.setText("Nome do Técnico:");
 
         labelLinhaPesquisa.setText("Linha de Pesquisa:");
 
@@ -82,11 +82,11 @@ public class Cadastro extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(labelLinhaPesquisa)
-                            .addComponent(labelLider))
+                            .addComponent(labelTecnico))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtLinhaPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                            .addComponent(txtLider))))
+                            .addComponent(txtTecnico))))
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -103,8 +103,8 @@ public class Cadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelLider)
-                    .addComponent(txtLider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTecnico)
+                    .addComponent(txtTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -125,7 +125,7 @@ public class Cadastro extends javax.swing.JFrame {
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         // TODO add your handling code here:
-        txtLider.setText("");
+        txtTecnico.setText("");
         txtLinhaPesquisa.setText("");
         txtOrientador.setText("");
         txtAno.setText("");
@@ -134,17 +134,19 @@ public class Cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        // TODO add your handling code here:
-        String nomeLider = txtLider.getText();
+         // TODO add your handling code here:
+        String nomeTecnico = txtTecnico.getText();
         String linhaPesquisa = txtLinhaPesquisa.getText();
         String orientador = txtOrientador.getText();
         String ano = txtAno.getText();
         int qtd = 0;
         
-        if(nomeLider.isEmpty()){
-            txtLider.requestFocus();
-            txtLider.setBackground(red);
-            JOptionPane.showMessageDialog(rootPane, "Preencha o campo Nome do Líder!");
+        // TESTES PARA VERIFICAR PREENCHIMENTO
+        
+        if(nomeTecnico.isEmpty()){
+            txtTecnico.requestFocus();
+            txtTecnico.setBackground(red);
+            JOptionPane.showMessageDialog(rootPane, "Preencha o campo Nome do Técnico!");
         }else if(linhaPesquisa.isEmpty()){
             txtLinhaPesquisa.requestFocus();
             txtLinhaPesquisa.setBackground(red);
@@ -157,6 +159,8 @@ public class Cadastro extends javax.swing.JFrame {
             txtAno.requestFocus();
             txtAno.setBackground(red);
             JOptionPane.showMessageDialog(rootPane, "Preencha o campo Ano!");
+            
+        // CASO ESTEJA TUDO PREENCHIDO, SOLICITA A QTD DE ALUNOS (APENAS NÚMEROS!!)
         }else {
             boolean x = false;
             String digitado  = null;
@@ -172,14 +176,17 @@ public class Cadastro extends javax.swing.JFrame {
                     x = true;
                  }
             }while(x);
-            qtd = Integer.parseInt(digitado);   
-
-            Alunos formQuantidade = new Alunos();
-            formQuantidade.setVisible(true);
+            qtd = Integer.parseInt(digitado);                    
             
-            formQuantidade.quantidade = qtd;
+            for(int i = 0; i < qtd; i++){   
+                Alunos formQuantidade = new Alunos();               
+                formQuantidade.setVisible(true);
+            }
             
-        }  
+            // MOSTRAR ALUNOS CADASTRADOS
+           
+            
+        } 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
@@ -209,6 +216,8 @@ public class Cadastro extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -224,12 +233,12 @@ public class Cadastro extends javax.swing.JFrame {
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel labelLider;
     private javax.swing.JLabel labelLinhaPesquisa;
     private javax.swing.JLabel labelOrientador;
+    private javax.swing.JLabel labelTecnico;
     private javax.swing.JTextField txtAno;
-    private javax.swing.JTextField txtLider;
     private javax.swing.JTextField txtLinhaPesquisa;
     private javax.swing.JTextField txtOrientador;
+    private javax.swing.JTextField txtTecnico;
     // End of variables declaration//GEN-END:variables
 }

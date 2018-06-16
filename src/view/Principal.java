@@ -1,4 +1,5 @@
 /*
+
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -216,33 +217,35 @@ public class Principal extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         
         //teste para conexão do hibernate
-        
-        Pessoa pessoaTeste = new Pessoa(0,"Pessoa teste Aluno");
-        PessoaController controllerPTeste = new PessoaController();
-        controllerPTeste.salvar(pessoaTeste);
-        //pessoaTeste = controllerPTeste.get(1);
-        
-        Pessoa pessoaTeste2 = new Pessoa(0,"Pessoa teste Tecnico");
-        PessoaController controllerPTeste2 = new PessoaController();
-        controllerPTeste2.salvar(pessoaTeste2);
-        
-        Pessoa pessoaTeste3 = new Pessoa(0,"Pessoa teste Orientador");
-        PessoaController controllerPTeste3 = new PessoaController();
-        controllerPTeste3.salvar(pessoaTeste3);
-        
-        Aluno alunoTeste = new Aluno(0, pessoaTeste);
-        AlunoController controllerATeste = new AlunoController();
-        controllerATeste.salvar(alunoTeste);
-        
-        Tecnico tecnicoTeste = new Tecnico(0, pessoaTeste2);
-        TecnicoController controllerTTeste = new TecnicoController();
-        controllerTTeste.salvar(tecnicoTeste);
-        
-        Orientador OrientadorTeste = new Orientador(0, pessoaTeste3);
-        OrientadorController controllerOTeste = new OrientadorController();
-        controllerOTeste.salvar(OrientadorTeste);
+//        
+//        Pessoa pessoaTeste = new Pessoa(0,"Pessoa teste Aluno");
+//        PessoaController controllerPTeste = new PessoaController();
+//        controllerPTeste.salvar(pessoaTeste);
+//        //pessoaTeste = controllerPTeste.get(1);
+//        
+//        Pessoa pessoaTeste2 = new Pessoa(0,"Pessoa teste Tecnico");
+//        PessoaController controllerPTeste2 = new PessoaController();
+//        controllerPTeste2.salvar(pessoaTeste2);
+//        
+//        Pessoa pessoaTeste3 = new Pessoa(0,"Pessoa teste Orientador");
+//        PessoaController controllerPTeste3 = new PessoaController();
+//        controllerPTeste3.salvar(pessoaTeste3);
+//        
+//        Aluno alunoTeste = new Aluno(0, pessoaTeste);
+//        AlunoController controllerATeste = new AlunoController();
+//        controllerATeste.salvar(alunoTeste);
+//        
+//        Tecnico tecnicoTeste = new Tecnico(0, pessoaTeste2);
+//        TecnicoController controllerTTeste = new TecnicoController();
+//        controllerTTeste.salvar(tecnicoTeste);
+//        
+//        Orientador OrientadorTeste = new Orientador(0, pessoaTeste3);
+//        OrientadorController controllerOTeste = new OrientadorController();
+//        controllerOTeste.salvar(OrientadorTeste);
         
         //TesteJFrame teste1 = new TesteJFrame();
         //Teste1.show();

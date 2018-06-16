@@ -5,7 +5,9 @@
  */
 package view;
 
+import controller.*;
 import javax.swing.JOptionPane;
+import model.*;
 
 /**
  *
@@ -99,11 +101,19 @@ public class Alunos extends javax.swing.JFrame {
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
         // TODO add your handling code here:
 
-        for(int i=0; i<quantidade;i++){
-            this.setVisible(true);
-            nomesAlunos[i] = txtNomeAluno.getText();
-        }
-        JOptionPane.showMessageDialog(rootPane, "Vetor preenchido.");
+        Pessoa aluno = new Pessoa(0,txtNomeAluno.getText());
+        PessoaController cp = new PessoaController();
+        
+        Aluno tipoAluno = new Aluno(0, aluno);
+        AlunoController ca = new AlunoController();
+        System.out.println(quantidade);
+        
+            cp.salvar(aluno);
+            ca.salvar(tipoAluno);
+            txtNomeAluno.setText("");
+
+        JOptionPane.showMessageDialog(rootPane, "Cadastrado!");
+        this.dispose();
     }//GEN-LAST:event_btnInserirActionPerformed
 
     /**
@@ -133,6 +143,7 @@ public class Alunos extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Alunos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -140,12 +151,7 @@ public class Alunos extends javax.swing.JFrame {
                 new Alunos().setVisible(true);
             }
         });
-    
-    
     }
-    
-   
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInserir;
     private javax.swing.JDesktopPane jDesktopPane1;
