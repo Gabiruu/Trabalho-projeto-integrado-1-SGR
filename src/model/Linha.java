@@ -8,45 +8,37 @@ package model;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.FetchType;
 
 /**
  *
- * @author 
+ * @author JulieneCaroline
  */
-
 @Entity
-public class Tecnico implements Serializable {
+public class Linha implements Serializable{
     
     @Id
     @GeneratedValue
     private int id;
         
-    @ManyToOne
-    private Pessoa pessoa;
+    @OneToMany(mappedBy="linha", fetch = FetchType.LAZY)
+    private List<LinhaOrientador> linhaOrientadors;
     
-    @OneToMany(mappedBy="tecnico", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="linha", fetch = FetchType.LAZY)
     private List<Pesquisa> pesquisa;
+
+    //construtuor vazio 
+    public Linha() {
+    }
     
-    //construtor vazio
-    public Tecnico() {
-    }
-
-    public Tecnico(int id, Pessoa pessoa) {
+    //construtuor cheio 
+    public Linha(int id, List<LinhaOrientador> linhaOrientadors) {
         this.id = id;
-        this.pessoa = pessoa;
-    }
-     
-    //construtor cheio
-
-    public Tecnico(int id, Pessoa pessoa, List<Pesquisa> pesquisa) {
-        this.id = id;
-        this.pessoa = pessoa;
-        this.pesquisa = pesquisa;
+        this.linhaOrientadors = linhaOrientadors;
     }
     
     //getters & setters
@@ -59,12 +51,12 @@ public class Tecnico implements Serializable {
         this.id = id;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public List<LinhaOrientador> getLinhaOrientadors() {
+        return linhaOrientadors;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setLinhaOrientadors(List<LinhaOrientador> linhaOrientadors) {
+        this.linhaOrientadors = linhaOrientadors;
     }
 
     public List<Pesquisa> getPesquisa() {
@@ -74,5 +66,6 @@ public class Tecnico implements Serializable {
     public void setPesquisa(List<Pesquisa> pesquisa) {
         this.pesquisa = pesquisa;
     }
-               
+     
+    
 }

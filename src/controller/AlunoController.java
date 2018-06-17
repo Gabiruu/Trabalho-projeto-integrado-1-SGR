@@ -10,7 +10,7 @@ import model.*;
 
 /**
  *
- * @author jpescola
+ * @author 
  */
 public class AlunoController extends Controller<Aluno>{
 
@@ -28,12 +28,12 @@ public class AlunoController extends Controller<Aluno>{
         return super.listar(Aluno.class, campo, valor); 
     }
 
-    public Aluno get(int id) {
-        return super.get(Aluno.class, id); 
-    }
-    
-    public List<Aluno> listar() {
-        return super.listar(Aluno.class, "nome", ""); 
-    }    
+        public Aluno get(int id) {
+            return super.get(Aluno.class, id); 
+        }
+
+        public List<Aluno> listar() {
+            return super.listar(Aluno.class, "nome", ""); 
+        }    
     
 }

@@ -5,9 +5,12 @@
  */
 package view;
 
+import controller.*;
 import static java.awt.Color.red;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
+import model.*;
+
 
 /**
  *
@@ -137,12 +140,29 @@ public class Cadastro extends javax.swing.JFrame {
          // TODO add your handling code here:
         String nomeTecnico = txtTecnico.getText();
         String linhaPesquisa = txtLinhaPesquisa.getText();
-        String orientador = txtOrientador.getText();
+        String nomeOrientador = txtOrientador.getText();
         String ano = txtAno.getText();
         int qtd = 0;
         
-        // TESTES PARA VERIFICAR PREENCHIMENTO
+        //salvando tecnico no banco de dados
+        Pessoa tecnico = new Pessoa(0,nomeTecnico);
+        PessoaController cp = new PessoaController();
         
+        Tecnico tipoTecnico = new Tecnico (0,tecnico);
+        TecnicoController ct = new TecnicoController();
+               
+        cp.salvar(tecnico);
+        ct.salvar(tipoTecnico);
+        
+        //salvando tecnico no banco de dados
+        Pessoa orientador = new Pessoa(0,nomeOrientador);
+        Orientador tipoOrientador = new Orientador (0,orientador);
+        OrientadorController co = new OrientadorController();
+        cp.salvar(orientador);
+        co.salvar(tipoOrientador);
+        
+        
+        // TESTES PARA VERIFICAR PREENCHIMENTO
         if(nomeTecnico.isEmpty()){
             txtTecnico.requestFocus();
             txtTecnico.setBackground(red);
@@ -151,7 +171,7 @@ public class Cadastro extends javax.swing.JFrame {
             txtLinhaPesquisa.requestFocus();
             txtLinhaPesquisa.setBackground(red);
             JOptionPane.showMessageDialog(rootPane, "Preencha o campo Linha de Pesquisa!");
-        }else if(orientador.isEmpty()){
+        }else if(nomeOrientador.isEmpty()){
             txtOrientador.requestFocus();
             txtOrientador.setBackground(red);
             JOptionPane.showMessageDialog(rootPane, "Preencha o campo Orientador!");
@@ -159,7 +179,9 @@ public class Cadastro extends javax.swing.JFrame {
             txtAno.requestFocus();
             txtAno.setBackground(red);
             JOptionPane.showMessageDialog(rootPane, "Preencha o campo Ano!");
+                
             
+        
         // CASO ESTEJA TUDO PREENCHIDO, SOLICITA A QTD DE ALUNOS (APENAS NÚMEROS!!)
         }else {
             boolean x = false;
